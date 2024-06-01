@@ -36,7 +36,7 @@ class LoginView(View):
         form = SendEmailForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data.get("email")
-            send_message(reciver=email)
+            send_message(request, reciver=email)
             return redirect("index:index")
         return redirect("auth:login")
 
