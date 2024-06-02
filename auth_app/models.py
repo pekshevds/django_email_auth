@@ -15,6 +15,12 @@ class User(AbstractUser):
     email = models.EmailField(_("email address"),
                               unique=True)
 
+    def new_token(self):
+        return str(self.tokens.create(user=self))
+
+    def __str__(self) -> str:
+        return self.email
+
     class Meta:
         verbose_name = "Пользователь"
         verbose_name_plural = "Пользователи"

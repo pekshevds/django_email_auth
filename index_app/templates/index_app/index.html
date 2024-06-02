@@ -6,8 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>hello world</h1>
-    <a href="{% url 'auth:login' %}">Логин</a>
-    
+    <h1>hello {{ user }}</h1>
+    {% if user.is_authenticated %}
+    <a href="{% url 'auth:logout' %}">Выйти</a>
+    {% else %}    
+    <a href="{% url 'auth:login' %}">Войти</a>
+    {% endif %}
 </body>
 </html>
